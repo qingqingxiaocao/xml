@@ -1,0 +1,34 @@
+package com.kaishengit.web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/student.xml")
+public class XmlServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+		out.print("<students>");
+		
+		for(int i=1;i<=5;i++){
+			
+			out.print("<student id=\"00"+i+"\">");
+			out.print("<name>小小"+i+"</name>");
+			out.print("<age>2"+i+"</age>");
+			out.print("</student>");
+		
+		}
+		out.print("</students>");
+	}
+
+}
